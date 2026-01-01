@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gaming-bg: #09090b;
+  /* Deep Zinc Black */
+  --color-gaming-card: #18181b;
+  /* Zinc 900 */
+  --color-gaming-primary: #dc2626;
+  /* EA Red */
+  --color-gaming-secondary: #ffffff;
+  /* White text */
+  --color-gaming-accent: #ef4444;
+  /* Brighter Red */
+  --color-gaming-text: #fafafa;
+  --color-gaming-muted: #a1a1aa;
+
+  --animate-fade-in: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pulse-slow: pulseSlow 4s infinite;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulseSlow {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+body {
+  background-color: var(--color-gaming-bg);
+  color: var(--color-gaming-text);
+  font-family: 'Inter', system-ui, sans-serif;
+}
