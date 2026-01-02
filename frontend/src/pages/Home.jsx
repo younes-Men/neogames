@@ -24,7 +24,8 @@ const Home = () => {
         const fetchGames = async () => {
             try {
                 // Try to fetch from backend
-                const response = await axios.get('http://localhost:5000/api/games');
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+                const response = await axios.get(`${apiUrl}/api/games`);
                 setGames(response.data);
                 setLoading(false);
             } catch (err) {
