@@ -9,9 +9,7 @@ const GameCard = ({ game }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 1, y: 0 }}
             whileHover={{ y: -10, scale: 1.02 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="group relative h-[450px] w-full rounded-2xl overflow-hidden cursor-pointer shadow-xl hover:shadow-[0_0_30px_rgba(220,38,38,0.3)] border border-transparent hover:border-gaming-primary/50 bg-zinc-900 transition-all duration-300"

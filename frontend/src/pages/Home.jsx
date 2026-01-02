@@ -118,11 +118,16 @@ const Home = () => {
                         Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-gaming-primary to-gaming-accent">Games</span>
                     </h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {games.map(game => (
-                        <GameCard key={game._id} game={game} />
-                    ))}
-                </div>
+
+                {games.length === 0 ? (
+                    <div className="text-white text-center text-xl py-20">No games found in the database.</div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {games.map(game => (
+                            <GameCard key={game._id} game={game} />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
