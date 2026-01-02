@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { FaShoppingCart, FaArrowLeft, FaStar, FaGamepad, FaEnvelope, FaInfinity, FaBolt, FaHeadset } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 
 const GameDetail = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [game, setGame] = useState(null);
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
@@ -95,7 +96,10 @@ const GameDetail = () => {
                     <div className="mt-auto border-t border-white/10 pt-8 flex items-center justify-between">
                         <span className="text-3xl font-bold text-gaming-secondary">{game.price} DH</span>
                         <button
-                            onClick={() => addToCart(game)}
+                            onClick={() => {
+                                addToCart(game);
+                                navigate('/cart');
+                            }}
                             className="bg-gaming-primary hover:bg-gaming-secondary text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-3 transition-colors shadow-lg shadow-gaming-primary/20"
                         >
                             <FaShoppingCart /> Acheter

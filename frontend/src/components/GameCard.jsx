@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import { FaShoppingCart, FaInfoCircle } from 'react-icons/fa';
 
 const GameCard = ({ game }) => {
     const { addToCart } = useCart();
+    const navigate = useNavigate();
 
     return (
         <motion.div
@@ -42,6 +43,7 @@ const GameCard = ({ game }) => {
                             onClick={(e) => {
                                 e.preventDefault();
                                 addToCart(game);
+                                navigate('/cart');
                             }}
                             className="flex items-center gap-2 bg-gaming-primary px-4 py-2 rounded-sm text-white font-bold uppercase tracking-wider text-xs hover:bg-red-700 transition-colors shadow-lg transform hover:scale-105 active:scale-95"
                         >

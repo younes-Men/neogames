@@ -91,6 +91,13 @@ const Cart = () => {
                                 <FaWhatsapp className="text-xl" /> Valider ma commande
                             </button>
 
+                            <Link
+                                to="/"
+                                className="w-full border border-gaming-secondary/50 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors mb-4 hover:bg-white/5"
+                            >
+                                Continuer mes achats
+                            </Link>
+
                             <button onClick={clearCart} className="w-full text-sm text-gaming-muted hover:text-red-500 transition-colors">
                                 Vider le panier
                             </button>

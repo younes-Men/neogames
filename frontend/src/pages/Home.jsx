@@ -98,16 +98,7 @@ const Home = () => {
                         </motion.div>
                     </div>
 
-                    {/* Navigation Dots */}
-                    <div className="absolute bottom-10 right-10 flex gap-2 z-30">
-                        {games.map((_, idx) => (
-                            <button
-                                key={idx}
-                                onClick={() => setCurrentImageIndex(idx)}
-                                className={`h-1 transition-all duration-300 ${idx === currentImageIndex ? 'w-8 bg-white' : 'w-4 bg-white/30 hover:bg-white/50'}`}
-                            />
-                        ))}
-                    </div>
+
                 </div>
             </section>
 
