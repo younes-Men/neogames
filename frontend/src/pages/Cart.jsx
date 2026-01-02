@@ -40,7 +40,7 @@ const Cart = () => {
                         <AnimatePresence>
                             {cart.map(item => (
                                 <motion.div
-                                    key={item._id}
+                                    key={item.id}
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
@@ -53,11 +53,11 @@ const Cart = () => {
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="flex items-center bg-gaming-bg rounded-lg border border-white/10">
-                                            <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="px-3 py-1 text-white hover:text-gaming-primary">-</button>
+                                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-3 py-1 text-white hover:text-gaming-primary">-</button>
                                             <span className="w-8 text-center text-sm">{item.quantity}</span>
-                                            <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="px-3 py-1 text-white hover:text-gaming-primary">+</button>
+                                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-3 py-1 text-white hover:text-gaming-primary">+</button>
                                         </div>
-                                        <button onClick={() => removeFromCart(item._id)} className="text-red-500 hover:text-red-400 p-2">
+                                        <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-400 p-2">
                                             <FaTrash />
                                         </button>
                                     </div>
