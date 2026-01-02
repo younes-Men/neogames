@@ -54,7 +54,7 @@ const Home = () => {
                     {games.length > 0 ? (
                         games.map((game, index) => (
                             <motion.div
-                                key={game._id}
+                                key={game.id}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -124,7 +124,7 @@ const Home = () => {
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {games.map(game => (
-                            <GameCard key={game._id} game={game} />
+                            <GameCard key={game.id} game={game} />
                         ))}
                     </div>
                 )}

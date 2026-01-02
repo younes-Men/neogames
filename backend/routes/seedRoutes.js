@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Game = require('../models/Game');
+const supabase = require('../config/supabaseClient');
 
 const standardDescription = "🎮 Compte Steam Officiel\n📧 Full access (u can change Email + Password)\n♾️ Lifetime Access\n⚡ Instant Delivery\n🆘 24/7 Support";
 
@@ -65,8 +65,27 @@ const sampleGames = [
 
 router.get('/', async (req, res) => {
     try {
-        await Game.deleteMany({});
-        const createdGames = await Game.insertMany(sampleGames);
+        // Delete all existing records (using a filter that matches all, e.g. id != 0)
+        // Assuming 'id' is a numeric primary key
+        const { error: deleteError } = await supabase
+            .from('games')
+            .delete()
+            .neq('id', 0);
+
+        if (deleteError) {
+            // If table is empty or error, log it but don't stop strictly if it's just "0 rows affected" logic issues, 
+            // but real errors should be thrown.
+            console.error('Delete error:', deleteError);
+            // Proceeding to insert anyway
+        }
+
+        const { data: createdGames, error: insertError } = await supabase
+            .from('games')
+            .insert(sampleGames)
+            .select();
+
+        if (insertError) throw insertError;
+
         res.send({ createdGames });
     } catch (error) {
         res.status(500).send({ message: error.message });

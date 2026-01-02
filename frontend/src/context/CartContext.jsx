@@ -17,10 +17,10 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (game) => {
         setCart(prevCart => {
-            const existingItem = prevCart.find(item => item._id === game._id);
+            const existingItem = prevCart.find(item => item.id === game.id);
             if (existingItem) {
                 return prevCart.map(item =>
-                    item._id === game._id ? { ...item, quantity: item.quantity + 1 } : item
+                    item.id === game.id ? { ...item, quantity: item.quantity + 1 } : item
                 );
             }
             return [...prevCart, { ...game, quantity: 1 }];
@@ -28,13 +28,13 @@ export const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (gameId) => {
-        setCart(prevCart => prevCart.filter(item => item._id !== gameId));
+        setCart(prevCart => prevCart.filter(item => item.id !== gameId));
     };
 
     const updateQuantity = (gameId, quantity) => {
         if (quantity < 1) return;
         setCart(prevCart =>
-            prevCart.map(item => item._id === gameId ? { ...item, quantity } : item)
+            prevCart.map(item => item.id === gameId ? { ...item, quantity } : item)
         );
     };
 
