@@ -18,6 +18,9 @@ const Cart = () => {
 
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/212644553500?text=${encodedMessage}`, '_blank');
+
+        // Clear the cart after redirecting to WhatsApp
+        clearCart();
     };
 
     return (
